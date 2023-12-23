@@ -18,5 +18,6 @@ module.exports = {
     "unicorn/prefer-node-protocol": "off",
     "unicorn/filename-case": "off",
     "unicorn/prevent-abbreviations": "off",
+    "unicorn/expiring-todo-comments": "off",
   },
 };
