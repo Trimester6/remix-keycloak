@@ -1,4 +1,5 @@
 # Remix Auth for Keycloak
+<a href="https://nodei.co/npm/remix-keycloak/"><img src="https://nodei.co/npm/remix-keycloak.png?mini=true"></a>
 
 This repository is based on existing repository by [@mlcsthor](https://github.com/mlcsthor/remix-auth-keycloak/)
 
