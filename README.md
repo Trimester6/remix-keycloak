@@ -4,7 +4,7 @@ This repository is based on existing repository by [@mlcsthor](https://github.co
 
 I took it on myself to maintain it because original maintainer decided to archive existing repository on December 2nd 2023. 
 
-Some tweaks were introduced for easier maintenance and more clearer code.
+Some tweaks were introduced for easier maintenance and easier readibility.
 
 Reason behind is that we are using it for our project over at [Cybernite Intelligence](https://github.com/Cybernite-Intelligence-Inc/)
 
