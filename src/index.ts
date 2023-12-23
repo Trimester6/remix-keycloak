@@ -61,7 +61,7 @@ export class KeycloakStrategy<User> extends OAuth2Strategy<
   name = "keycloak"; // Strategy name.
 
   private userInfoURL: string; // URL to fetch user information from Keycloak.
-  private scope: string; // Scopes for Keycloak authentication.
+  public scope: string; // Scopes for Keycloak authentication.
 
   /**
    * Constructor for the Keycloak authentication strategy.
