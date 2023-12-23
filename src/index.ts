@@ -5,6 +5,9 @@ import type {
 } from "remix-auth-oauth2";
 import { OAuth2Strategy } from "remix-auth-oauth2";
 
+/**
+ * Options for configuring the Keycloak authentication strategy.
+ */
 export interface KeycloakStrategyOptions {
   useSSL?: boolean;
   domain: string;
@@ -15,6 +18,9 @@ export interface KeycloakStrategyOptions {
   scope?: string;
 }
 
+/**
+ * Additional parameters returned in the Keycloak user profile.
+ */
 export interface KeycloakExtraParams extends Record<string, string | number> {
   id_token: string;
   scope: string;
@@ -22,6 +28,9 @@ export interface KeycloakExtraParams extends Record<string, string | number> {
   token_type: "Bearer";
 }
 
+/**
+ * User profile structure specific to Keycloak authentication.
+ */
 export interface KeycloakProfile extends OAuth2Profile {
   id: string;
   displayName: string;
@@ -41,6 +50,9 @@ export interface KeycloakProfile extends OAuth2Profile {
   };
 }
 
+/**
+ * Keycloak authentication strategy implementation.
+ */
 export class KeycloakStrategy<User> extends OAuth2Strategy<
   User,
   KeycloakProfile,
@@ -50,7 +62,11 @@ export class KeycloakStrategy<User> extends OAuth2Strategy<
 
   private userInfoURL: string;
   private scope: string;
-
+  /**
+   * Constructor for the Keycloak authentication strategy.
+   * @param options - Configuration options for the Keycloak strategy.
+   * @param verify - Verify callback function to validate user identity.
+   */
   constructor(
     {
       useSSL = false,
@@ -68,6 +84,7 @@ export class KeycloakStrategy<User> extends OAuth2Strategy<
   ) {
     const host = `${useSSL ? "https" : "http"}://${domain}`;
 
+    // Call the constructor of the parent OAuth2Strategy class with Keycloak-specific parameters.
     super(
       {
         authorizationURL: `${host}/realms/${realm}/protocol/openid-connect/auth`,
@@ -83,17 +100,27 @@ export class KeycloakStrategy<User> extends OAuth2Strategy<
     this.scope = scope;
   }
 
+  /**
+   * Custom method to provide additional authorization parameters specific to Keycloak.
+   * @returns URLSearchParams containing the specified scope.
+   */
   protected authorizationParams() {
     const urlSearchParams = { scope: this.scope };
     return new URLSearchParams(urlSearchParams);
   }
 
+  /**
+   * Custom method to fetch and parse the user profile from Keycloak.
+   * @param accessToken - Access token obtained during the authentication process.
+   * @returns Promise resolving to the Keycloak user profile.
+   */
   protected async userProfile(accessToken: string): Promise<KeycloakProfile> {
     try {
       const headers = new Headers({ Authorization: `Bearer ${accessToken}` });
       const response = await fetch(this.userInfoURL, { headers });
       const data = await response.json();
 
+      // Construct a KeycloakProfile object from the received data.
       const profile: KeycloakProfile = {
         provider: "keycloak",
         displayName: data.name,
