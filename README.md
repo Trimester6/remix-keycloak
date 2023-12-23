@@ -6,6 +6,8 @@ I took it on myself to maintain it because original maintainer decided to archiv
 
 Reason behind is that we are using it for our project over at [Cybernite Intelligence](https://github.com/Cybernite-Intelligence-Inc/)
 
+This package supports both Remix v1 and Remix v2.
+
 ## Supported runtimes
 
 | Runtime    | Has Support |
@@ -16,8 +18,6 @@ Reason behind is that we are using it for our project over at [Cybernite Intelli
 
 
 ## Table of Contents
-
-
 - [Remix Auth for Keycloak](#remix-auth-for-keycloak)
   - [Supported runtimes](#supported-runtimes)
   - [Table of Contents](#table-of-contents)
