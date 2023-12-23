@@ -1,0 +1,69 @@
+{
+  "name": "remix-keycloak",
+  "version": "2.0.3",
+  "repository": "github:marsmars0x01/remix-keycloak",
+  "homepage": "https://github.com/marsmars0x01/remix-keycloak#readme",
+  "author": {
+    "name": "mars"
+  },
+  "main": "./build/index.js",
+  "types": "./build/index.d.ts",
+  "scripts": {
+    "build": "tsc --project tsconfig.json",
+    "typecheck": "tsc --project tsconfig.json --noEmit",
+    "lint": "eslint --ext .ts,.tsx src/",
+    "test": "jest --config=config/jest.config.ts --passWithNoTests",
+    "coverage": "npm run test -- --coverage"
+  },
+  "publishConfig": {
+    "@marsmars0x01:registry": "https://npm.pkg.github.com"
+  },
+  "keywords": [
+    "remix",
+    "remix-auth",
+    "auth",
+    "authentication",
+    "strategy",
+    "keycloak"
+  ],
+  "license": "MIT",
+  "files": [
+    "build",
+    "package.json",
+    "README.md"
+  ],
+  "peerDependencies": {
+    "@remix-run/server-runtime": "^1 || ^2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.17.10",
+    "@babel/preset-env": "^7.17.10",
+    "@babel/preset-react": "^7.16.7",
+    "@babel/preset-typescript": "^7.16.7",
+    "@remix-run/node": "^1.4.3",
+    "@remix-run/react": "^1.4.3",
+    "@remix-run/server-runtime": "^1.0.0",
+    "@types/debug": "^4.1.7",
+    "@types/jest": "^27.5.0",
+    "@types/uuid": "^8.3.4",
+    "@typescript-eslint/eslint-plugin": "^5.23.0",
+    "@typescript-eslint/parser": "^5.23.0",
+    "babel-jest": "^28.1.0",
+    "eslint": "^8.15.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-jest": "^26.1.5",
+    "eslint-plugin-jest-dom": "^4.0.1",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-unicorn": "^42.0.0",
+    "jest": "^28.1.0",
+    "jest-fetch-mock": "^3.0.3",
+    "prettier": "^2.6.2",
+    "react": "^18.1.0",
+    "ts-node": "^10.7.0",
+    "typescript": "^4.6.4"
+  },
+  "dependencies": {
+    "remix-auth": "^3.2.2",
+    "remix-auth-oauth2": "^1.2.2"
+  }
+}
