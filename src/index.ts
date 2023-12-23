@@ -9,44 +9,44 @@ import { OAuth2Strategy } from "remix-auth-oauth2";
  * Options for configuring the Keycloak authentication strategy.
  */
 export interface KeycloakStrategyOptions {
-  useSSL?: boolean;
-  domain: string;
-  realm: string;
-  clientID: string;
-  clientSecret: string;
-  callbackURL: string;
-  scope?: string;
+  useSSL?: boolean; // Whether to use SSL for Keycloak server communication.
+  domain: string; // Keycloak server domain.
+  realm: string; // Keycloak realm.
+  clientID: string; // Client ID for the registered application in Keycloak.
+  clientSecret: string; // Client Secret for the registered application in Keycloak.
+  callbackURL: string; // URL to which Keycloak will redirect the user after authentication.
+  scope?: string; // Optional scopes for Keycloak authentication.
 }
 
 /**
  * Additional parameters returned in the Keycloak user profile.
  */
 export interface KeycloakExtraParams extends Record<string, string | number> {
-  id_token: string;
-  scope: string;
-  expires_in: 86_400;
-  token_type: "Bearer";
+  id_token: string; // ID token issued by Keycloak.
+  scope: string; // Scopes granted by the user.
+  expires_in: 86_400; // Expiry time for the token.
+  token_type: "Bearer"; // Token type.
 }
 
 /**
  * User profile structure specific to Keycloak authentication.
  */
 export interface KeycloakProfile extends OAuth2Profile {
-  id: string;
-  displayName: string;
+  id: string; // Unique user ID.
+  displayName: string; // Display name of the user.
   name: {
-    familyName: string;
-    givenName: string;
+    familyName: string; // Family name of the user.
+    givenName: string; // Given name of the user.
   };
-  emails: [{ value: string }];
+  emails: [{ value: string }]; // User's email(s).
   _json: {
-    sub: string;
-    email: string;
-    email_verified: boolean;
-    preferred_username: string;
-    name: string;
-    given_name: string;
-    family_name: string;
+    sub: string; // Keycloak subject identifier.
+    email: string; // User's email.
+    email_verified: boolean; // Email verification status.
+    preferred_username: string; // Preferred username.
+    name: string; // Full name of the user.
+    given_name: string; // Given name of the user.
+    family_name: string; // Family name of the user.
   };
 }
 
@@ -58,10 +58,11 @@ export class KeycloakStrategy<User> extends OAuth2Strategy<
   KeycloakProfile,
   KeycloakExtraParams
 > {
-  name = "keycloak";
+  name = "keycloak"; // Strategy name.
 
-  private userInfoURL: string;
-  private scope: string;
+  private userInfoURL: string; // URL to fetch user information from Keycloak.
+  private scope: string; // Scopes for Keycloak authentication.
+
   /**
    * Constructor for the Keycloak authentication strategy.
    * @param options - Configuration options for the Keycloak strategy.
@@ -96,6 +97,7 @@ export class KeycloakStrategy<User> extends OAuth2Strategy<
       verify
     );
 
+    // Set Keycloak-specific URLs and scope.
     this.userInfoURL = `${host}/realms/${realm}/protocol/openid-connect/userinfo`;
     this.scope = scope;
   }
