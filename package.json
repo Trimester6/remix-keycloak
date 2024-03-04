@@ -36,7 +36,7 @@
     "@remix-run/server-runtime": "^1 || ^2"
   },
   "devDependencies": {
-    "@babel/core": "^7.17.10",
+    "@babel/core": "^7.24.0",
     "@babel/preset-env": "^7.23.6",
     "@babel/preset-react": "^7.16.7",
     "@babel/preset-typescript": "^7.16.7",
