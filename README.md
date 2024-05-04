@@ -50,7 +50,7 @@ npm i remix-keycloak
 ```tsx
 // app/utils/auth.server.ts
 import { Authenticator } from "remix-auth";
-import { Keycloak } from "remix-keycloak";
+import { KeycloakStrategy } from "remix-keycloak";
 
 // Create an instance of the authenticator, pass a generic with what your
 // strategies will return and will be stored in the session
